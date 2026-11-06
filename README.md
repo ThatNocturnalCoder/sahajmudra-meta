@@ -37,23 +37,13 @@ Camera frame ──► Muse Spark (candidate list + NONE) ──► detected sig
 
 The scoring prompt is deliberately strict: a blurry, missing or wrong hand is marked incorrect, scores are capped below the "mastered" threshold (80) when the sign is wrong, and the model is told to describe only what it can see.
 
-## Project history (honest note)
-
-SahajMudra existed before this hackathon as my university minor project (Flutter app with lessons, A–Z, numbers, greetings and a progress tracker). For the hackathon I worked in a **separate copy** of the project and built the Meta-powered parts:
-
-- Replaced the practice screen's fake/rule-based scoring with Muse Spark vision feedback
-- Made Setu real: Sign → Text (previously a random-letter generator), Voice → Sign via Muse Voice Transcribe, Text → Sign
-- Live-updating progress, streak fix, numbers tracking
-- Landing/auth polish, new app icon
-
 ## Known limitations
 
 - **Static hand shapes only.** Feedback is based on a single captured frame. Signs that involve movement (most greetings) cannot be judged yet.
 - **Letter descriptions need work.** The written descriptions for some letters are one-handed (closer to ASL) while the reference images are two-handed ISL, and a few descriptions are near-duplicates (2/V, 9/F, 0/O, 6/W). Numbers are the most reliable part right now.
 - **Greeting reference images are missing.**
 - **No custom-trained model.** Everything comes from Meta's hosted models; there is no on-device landmark model in this build.
-- **API key is compiled into the app** via `--dart-define`. That is fine for a hackathon demo, but a production version must call Meta through a small backend that holds the key.
-- Some legacy files from the original project (`brain_service.dart`, `ai_service.dart`) are not part of the Meta pipeline; `ai_service.dart` is only the offline fallback.
+- **API key is compiled into the app** via `--dart-define`. A production version must call Meta through a small backend that holds the key.
 
 ## Run it
 
@@ -74,4 +64,4 @@ Flutter / Dart, `camera`, `record`, `http`, `shared_preferences`, Meta Model API
 
 ## Author
 
-Mansha — B.Tech CSE (AI/ML), Amity University Madhya Pradesh · [@ThatNocturnalCoder](https://github.com/ThatNocturnalCoder)
+Mansha · [@ThatNocturnalCoder](https://github.com/ThatNocturnalCoder)
